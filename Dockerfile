@@ -38,4 +38,4 @@ ENTRYPOINT ["/bin/bash", "/usr/bin/entrypoint.sh"]
 # docker build -t webcopilot:latest .
 
 # Run using this command
-# docker run -it -v $PWD/output:/copilot/output -v $PWD/exclude:/copilot/exclude webcopilot:2.0-beta -d <destination> -b <BXSS Server> -a -x /copilot/exclude/exclude.txt -t <number of threads>
+# docker run -it -v $PWD/output:/copilot/output -v $PWD/exclude:/copilot/exclude webcopilot:latest -d <destination> -b <BXSS Server> -a -x /copilot/exclude/exclude.txt -t <number of threads>
