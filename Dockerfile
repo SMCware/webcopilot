@@ -24,9 +24,6 @@ RUN echo "test"> /copilot/output/test.txt
 RUN DEBIAN_FRONTEND=noninteractive && apt update
 RUN DEBIAN_FRONTEND=noninteractive && apt -y install git wget sudo bash curl
 
-# run commands once on the first run!
-
-
 
 RUN DEBIAN_FRONTEND=noninteractive &&  export TERM=dumb && chmod +x /copilot/webcopilot install.sh && \
     mv /copilot/webcopilot /usr/bin/ && \
@@ -35,12 +32,10 @@ RUN DEBIAN_FRONTEND=noninteractive &&  export TERM=dumb && chmod +x /copilot/web
 # command to run on container start
 
 
-# ENTRYPOINT ["/usr/bin/webcopilot", "-o", "/copilot/output/$(date +\"%Y%m%d_%H%M%S\")"]
-
 ENTRYPOINT ["/bin/bash", "/usr/bin/entrypoint.sh"]
 
 # build
-# docker build -t webcoplit:dev .
+# docker build -t webcopilot:latest .
 
 # Run using this command
-# docker run -it -v $PWD/.output:/copilot/output your_image_name:tag -d <destination> -b <BXSS Server> -a -x -t <number of threads>
+# docker run -it -v $PWD/output:/copilot/output -v $PWD/exclude:/copilot/exclude webcopilot:2.0-beta -d <destination> -b <BXSS Server> -a -x /copilot/exclude/exclude.txt -t <number of threads>
